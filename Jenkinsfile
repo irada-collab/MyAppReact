@@ -9,7 +9,7 @@ pipeline {
         // Stage 1 : récupérer le code depuis GitHub
         stage('Clonage') {
             steps {
-                git branch: 'main', url: 'https://github.com/TON-COMPTE/MyAppReact.git'
+                git branch: 'main', url: 'https://github.com/irada-collab/MyAppReact.git'
             }
         }
 
