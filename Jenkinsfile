@@ -3,9 +3,10 @@ pipeline {
 
     // Jenkins utilise n'importe quel agent disponible
     agent any
-        // Indique à Jenkins où se trouve Docker
+
+    // Chemin complet vers docker.exe (Jenkins ne le trouve pas tout seul)
     environment {
-        PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
+        DOCKER = 'C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe'
     }
 
     stages {
@@ -20,21 +21,21 @@ pipeline {
         // Stage 2 : arrêter les anciens conteneurs (évite les conflits de noms)
         stage('Nettoyage') {
             steps {
-                bat 'docker compose down'
+                bat '"%DOCKER%" compose down'
             }
         }
 
         // Stage 3 : construire les images Docker
         stage('Build') {
             steps {
-                bat 'docker compose build'
+                bat '"%DOCKER%" compose build'
             }
         }
 
         // Stage 4 : lancer l'application (le stage de lancement)
         stage('Lancement') {
             steps {
-                bat 'docker compose up -d'
+                bat '"%DOCKER%" compose up -d'
             }
         }
     }
