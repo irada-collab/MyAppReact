@@ -5,8 +5,11 @@ pipeline {
     agent any
 
     // Chemin complet vers docker.exe (Jenkins ne le trouve pas tout seul)
+      // Chemin complet vers docker.exe (Jenkins ne le trouve pas tout seul)
     environment {
-        DOCKER = 'C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe'
+        DOCKER = 'C:\\Users\\irada\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe'
+        // Configuration Docker de ton compte (contient le plugin "compose")
+        DOCKER_CONFIG = 'C:\\Users\\irada\\.docker'
     }
 
     stages {
