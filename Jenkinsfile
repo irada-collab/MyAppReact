@@ -3,6 +3,10 @@ pipeline {
 
     // Jenkins utilise n'importe quel agent disponible
     agent any
+        // Indique à Jenkins où se trouve Docker
+    environment {
+        PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
+    }
 
     stages {
 
